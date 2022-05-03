@@ -3,23 +3,36 @@ import CachedIcon from '@mui/icons-material/Cached';
 import "./Tabs.css"
 import SignalWifi4BarRoundedIcon from '@mui/icons-material/SignalWifi4BarRounded';
 import CalendarViewMonthRoundedIcon from '@mui/icons-material/CalendarViewMonthRounded';
+import DeptList from '../Pages/DeptList';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+  } from "react-router-dom";
 
 class Tabs extends Component {
     render() {
         return (
-            <div style={{width:"100%"}} >
+            <div style={{ width: "100%" }} >
                 <div className='upper-bar' >
                     <div className='h-tabs' >
-                        <div className='h-tabs-item' >
-                            <SignalWifi4BarRoundedIcon/> Permissions
+                        <div className='h-tabs-item-selected' >
+                            <SignalWifi4BarRoundedIcon /> Permissions
                         </div>
                         <div className='h-tabs-item' >
-                            <CalendarViewMonthRoundedIcon/> Approval Matrix
+                            <CalendarViewMonthRoundedIcon /> Approval Matrix
                         </div>
                     </div>
                     <div className='sync' >
-                        <CachedIcon/>  Last synced 15 mins ago
+                        <CachedIcon />  Last synced 15 mins ago
                     </div>
+                </div>
+                <div>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<DeptList/>} />
+                        </Routes>
+                    </BrowserRouter>
                 </div>
             </div>
         );

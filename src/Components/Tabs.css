@@ -26,4 +26,16 @@
     align-items: center;
     color: #333333;
     gap: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.h-tabs-item-selected{
+    display: flex;
+    align-items: center;
+    color: #FE0D0D;
+    border-bottom: solid 3px #FE0D0D;
+    gap: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
 }
