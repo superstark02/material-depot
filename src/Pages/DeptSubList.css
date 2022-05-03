@@ -8,4 +8,10 @@
 
 .col{
     padding: 15px 0px;
+    text-align: center;
+}
+
+.table-row{
+    display: grid;
+    grid-template-areas: 'main1 main2 main3 main4 main5 main';
 }

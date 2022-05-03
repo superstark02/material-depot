@@ -3,7 +3,9 @@ import {
     Link
 } from "react-router-dom";
 import ChildNavBar from '../Components/ChildNavbar';
-import InnerComp from '../Components/InnerComp';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import CustomizedSwitches from '../Components/Switch';
 import "./DeptSubList.css"
 
@@ -11,7 +13,7 @@ const data = [
     {
         name: "Enrolling Students",
         access: true,
-        crud: <td style={{ textAlign: "center" }}>
+        crud: <td style={{ textAlign: "center"}}>
             View <span className="text-muted">|</span> Create{" "}
             <span className="text-muted">|</span> Edit{" "}
             <span className="text-muted">|</span> Delete
@@ -105,14 +107,14 @@ export class DeptSubList extends Component {
                         </svg>
                     </span>
 
-                    <div className="container mx-2 my-2">
+                    <div className="">
                         <ChildNavBar />
 
                         <div className="my-1">
-                            <table className="table">
+                            <table className="table" style={{tableLayout:"fixed"}} >
                                 <thead className="my-thead-dark">
                                     <tr>
-                                        <td className="col"></td>
+                                        <td className="col" style={{width:"50px"}} ></td>
                                         <td className="col" style={{ textAlign: "left" }} >Department/Role Name</td>
                                         <td className="col">Access Level</td>
                                         <td className="col" style={{ textAlign: "center" }}>
@@ -122,49 +124,77 @@ export class DeptSubList extends Component {
                                         <td className="col"></td>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {
-                                        data.map((item, index) => {
-                                            return (
-                                                <tr key={index} >
-                                                    <td>
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="16"
-                                                            height="16"
-                                                            fill="currentColor"
-                                                            className="bi bi-plus-circle"
-                                                            viewBox="0 0 16 16"
-                                                        >
-                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                                        </svg>
-                                                    </td>
-                                                    <td>{item.name}</td>
-                                                    <td className='wrap' >
-                                                        {
-                                                            item.access ? (
-                                                                item.access === 'disabled' ? (
-                                                                    <div className="no-boxed">No Access</div>
-                                                                ): (
-                                                                    <div className="green-boxed">All Access</div>
-                                                                )
-                                                            ) : (
-                                                                <div className="red-boxed">Restricted Access</div>
-                                                            )
-                                                        }
-                                                    </td>
-                                                    {item.crud}
-                                                    <td style={{textAlign:"center"}} >1 min ago</td>
-                                                    <td>
-                                                        <CustomizedSwitches />
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
                             </table>
+                            {
+                                data.map((item, index) => {
+                                    return (
+                                        <Accordion key={index} style={{ width: "100%" }} elevation={0} >
+                                            <AccordionSummary
+                                                style={{
+                                                    width: "100%",
+                                                    boxShadow: "none"
+                                                }}
+                                            >
+                                                <table style={{width:"100%", tableLayout:"fixed"}} >
+                                                    <tr>
+                                                        <td style={{width:'50px'}} >
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                fill="currentColor"
+                                                                className="bi bi-plus-circle"
+                                                                viewBox="0 0 16 16"
+                                                            >
+                                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                            </svg>
+                                                        </td>
+                                                        <td>{item.name}</td>
+                                                        <td className='wrap' >
+                                                            {
+                                                                item.access ? (
+                                                                    item.access === 'disabled' ? (
+                                                                        <div className="no-boxed">No Access</div>
+                                                                    ) : (
+                                                                        <div className="green-boxed">All Access</div>
+                                                                    )
+                                                                ) : (
+                                                                    <div className="red-boxed">Restricted Access</div>
+                                                                )
+                                                            }
+                                                        </td>
+                                                        {item.crud}
+                                                        <td style={{ textAlign: "center"}} >1 min ago</td>
+                                                        <td>
+                                                            <CustomizedSwitches />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <div>
+                                                    All aspects in the financial details module
+                                                </div>
+                                                <div className='wrap' >
+                                                    <div>
+                                                            Access Control
+                                                            <div>
+
+                                                            </div>
+                                                    </div>
+                                                    <div>
+                                                            Permissions
+                                                            <div>
+
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
