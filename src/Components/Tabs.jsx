@@ -9,6 +9,7 @@ import {
     Routes,
     Route,
   } from "react-router-dom";
+import DeptSubList from '../Pages/DeptSubList';
 
 class Tabs extends Component {
     render() {
@@ -31,6 +32,7 @@ class Tabs extends Component {
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<DeptList/>} />
+                            <Route path="/view-details" element={<DeptSubList/>} />
                         </Routes>
                     </BrowserRouter>
                 </div>
