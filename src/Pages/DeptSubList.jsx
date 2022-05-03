@@ -8,12 +8,19 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import CustomizedSwitches from '../Components/Switch';
 import "./DeptSubList.css"
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Checkbox from '@mui/material/Checkbox';
 
 const data = [
     {
         name: "Enrolling Students",
         access: true,
-        crud: <td style={{ textAlign: "center"}}>
+        crud: <td style={{ textAlign: "center" }}>
             View <span className="text-muted">|</span> Create{" "}
             <span className="text-muted">|</span> Edit{" "}
             <span className="text-muted">|</span> Delete
@@ -111,10 +118,10 @@ export class DeptSubList extends Component {
                         <ChildNavBar />
 
                         <div className="my-1">
-                            <table className="table" style={{tableLayout:"fixed"}} >
+                            <table className="table" style={{ tableLayout: "fixed" }} >
                                 <thead className="my-thead-dark">
                                     <tr>
-                                        <td className="col" style={{width:"50px"}} ></td>
+                                        <td className="col" style={{ width: "50px" }} ></td>
                                         <td className="col" style={{ textAlign: "left" }} >Department/Role Name</td>
                                         <td className="col">Access Level</td>
                                         <td className="col" style={{ textAlign: "center" }}>
@@ -135,9 +142,9 @@ export class DeptSubList extends Component {
                                                     boxShadow: "none"
                                                 }}
                                             >
-                                                <table style={{width:"100%", tableLayout:"fixed"}} >
+                                                <table style={{ width: "100%", tableLayout: "fixed" }} >
                                                     <tr>
-                                                        <td style={{width:'50px'}} >
+                                                        <td style={{ width: '50px' }} >
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 width="16"
@@ -165,7 +172,7 @@ export class DeptSubList extends Component {
                                                             }
                                                         </td>
                                                         {item.crud}
-                                                        <td style={{ textAlign: "center"}} >1 min ago</td>
+                                                        <td style={{ textAlign: "center" }} >1 min ago</td>
                                                         <td>
                                                             <CustomizedSwitches />
                                                         </td>
@@ -176,18 +183,32 @@ export class DeptSubList extends Component {
                                                 <div>
                                                     All aspects in the financial details module
                                                 </div>
-                                                <div className='wrap' >
-                                                    <div>
-                                                            Access Control
-                                                            <div>
-
-                                                            </div>
+                                                <div style={{display:"flex", gap:"20px"}} >
+                                                    <div style={{width:'100%'}} >
+                                                        <div>
+                                                            <FormControl>
+                                                                <FormLabel id="demo-radio-buttons-group-label">Access Control</FormLabel>
+                                                                <RadioGroup
+                                                                    aria-labelledby="demo-radio-buttons-group-label"
+                                                                    defaultValue="female"
+                                                                    name="radio-buttons-group"
+                                                                >
+                                                                    <FormControlLabel style={{margin:"10px 0px"}}  value="female" control={<Radio />} label={<div>All Access<br/><FormLabel id="demo-radio-buttons-group-label">Can access all items</FormLabel></div>} />
+                                                                    <FormControlLabel style={{margin:"10px 0px"}}   value="male" control={<Radio />} label={<div>Restricted Access<br/><FormLabel id="demo-radio-buttons-group-label">Can access only assigned or created items</FormLabel></div>} />
+                                                                </RadioGroup>
+                                                            </FormControl>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                            Permissions
-                                                            <div>
-
-                                                            </div>
+                                                    <div style={{width:'100%'}} >
+                                                        <div>
+                                                            <FormGroup>
+                                                                <FormLabel id="demo-radio-buttons-group-label">Permissions</FormLabel>
+                                                                <FormControlLabel control={<Checkbox defaultChecked />} label="View items in access" />
+                                                                <FormControlLabel control={<Checkbox />} label="Edit items in access" />
+                                                                <FormControlLabel control={<Checkbox />} label="Create items in access" />
+                                                                <FormControlLabel control={<Checkbox />} label="Delete items in access" />
+                                                            </FormGroup>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </AccordionDetails>

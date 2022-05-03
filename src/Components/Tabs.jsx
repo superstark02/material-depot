@@ -12,15 +12,31 @@ import {
 import DeptSubList from '../Pages/DeptSubList';
 
 class Tabs extends Component {
+    state = {
+        permission: 'h-tabs-item-selected',
+        access: "h-tabs-item"
+    }
+
+    toggleTabs = (e) => {
+        if(e === 'permission' && this.state.permission === 'h-tabs-item'){
+            this.setState({permission: "h-tabs-item-selected"});
+            this.setState({access: "h-tabs-item"});
+        }
+        else if(e === 'access' && this.state.access === 'h-tabs-item'){
+            this.setState({permission: "h-tabs-item"});
+            this.setState({access: "h-tabs-item-selected"});
+        }
+    }
+
     render() {
         return (
             <div style={{ width: "100%" }} >
                 <div className='upper-bar' >
                     <div className='h-tabs' >
-                        <div className='h-tabs-item-selected' >
+                        <div className={this.state.permission} onClick={()=>{this.toggleTabs('permission')}} >
                             <SignalWifi4BarRoundedIcon /> Permissions
                         </div>
-                        <div className='h-tabs-item' >
+                        <div className={this.state.access} onClick={()=>{this.toggleTabs('access')}} >
                             <CalendarViewMonthRoundedIcon /> Approval Matrix
                         </div>
                     </div>

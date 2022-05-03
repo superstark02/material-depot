@@ -21,15 +21,24 @@ const tabs = [
 ]
 
 class SidenavBar extends Component {
+
+    state = {
+        selectedIndex: 2
+    }
+
+    toggleIndex = (e) => {
+        this.setState({selectedIndex: e})
+    }
+
     render() {
         return (
             <div style={{ display: "flex", width:"100%" }} >
                 <div className='tabs' >
                     {
                         tabs.map((item, index) => {
-                            if (index === 2) {
+                            if (index === this.state.selectedIndex) {
                                 return (
-                                    <div key={index} className='selected-item tab-item' >
+                                    <div key={index} className='selected-item tab-item' onClick={()=>{this.toggleIndex(index)}} >
                                         <div  >
                                             {item.icon}
                                         </div>
@@ -40,7 +49,7 @@ class SidenavBar extends Component {
                                 )
                             }
                             return (
-                                <div key={index} className='tab-item' >
+                                <div key={index} className='tab-item' onClick={()=>{this.toggleIndex(index)}} >
                                     <div  >
                                         {item.icon}
                                     </div>
