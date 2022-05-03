@@ -1,0 +1,21 @@
+.tabs{
+    padding: 0px 10px;
+    width: 250px;
+}
+
+.tab-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #828282;
+    margin: 10px 0px;
+    border-left: solid 5px #FFFF;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.selected-item{
+    background: #F1D8D8;
+    color: #FE0D0D;
+    border-left: solid 5px #FE0D0D;
+}
